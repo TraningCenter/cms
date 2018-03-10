@@ -1,0 +1,57 @@
+#header {
+    height: 100px;
+}
+
+.main{
+    background-color: #FAFAFA;
+}
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+
+.logo{
+    background: url("https://pbs.twimg.com/profile_images/583482649924218881/HbQGtx57.jpg");
+    background-size: contain;
+    margin-bottom: 10px;
+    height: 80px;
+    width: 80px;
+}
+
+.logoText{
+    font-weight: bold;
+    font-size: 70px;
+    color: #FAFAFA;
+    margin-top: 20px;
+}
+
+.post{
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: #B2DFDB;
+}
+
+.postHeader{
+    height: 90px;
+    padding: 10px;
+}
+
+.postTitle{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.authorName{
+    font-size: 20px;
+}
+
+.postContent{
+    padding: 20px;
+    background-color: #80CBC4;
+    height: 300px;
+}

@@ -2,10 +2,16 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:b="http://bootsfaces.net/ui"
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <div class="header">
-
-    </div>
+    <b:navBar id="header" inverse="true">
+        <h:outputLink styleClass="navbar-brand logo-brand" value="#{request.contextPath}">
+            <div class="logo"/>
+        </h:outputLink>
+        <h:outputLink value="#{request.contextPath}">
+            <h:outputText styleClass="logoText" value="Habrahabr"/>
+        </h:outputLink>
+    </b:navBar>
 
 </ui:composition>

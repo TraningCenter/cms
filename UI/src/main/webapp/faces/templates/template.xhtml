@@ -10,27 +10,23 @@
     <title>Habrahabr</title>
     <h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>
     <h:outputScript library="primefaces" name="jquery/jquery-plugins.js" target="head"/>
-    <h:outputStylesheet name="css/header.css"/>
+    <h:outputStylesheet name="css/style.css"/>
 </h:head>
 
 <h:body>
 
-    <div id="header">
-        <ui:insert name="header" >
-            <ui:include src="faces/templates/header.xhtml" />
-        </ui:insert>
-    </div>
+    <div class="main">
+        <div id="header">
+            <ui:insert name="header" >
+                <ui:include src="header.xhtml" />
+            </ui:insert>
+        </div>
 
-    <div id="content">
-        <ui:insert name="content" >
-            <ui:include src="faces/templates/content.xhtml" />
-        </ui:insert>
-    </div>
-
-    <div id="footer">
-        <ui:insert name="footer" >
-            <ui:include src="faces/templates/footer.xhtml" />
-        </ui:insert>
+        <div id="content">
+            <ui:insert name="contentPlace" >
+                <ui:include src="content.xhtml" />
+            </ui:insert>
+        </div>
     </div>
 
 </h:body>

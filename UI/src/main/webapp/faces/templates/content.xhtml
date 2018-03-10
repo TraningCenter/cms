@@ -1,6 +1,11 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <h1>This is default content</h1>
+    <ui:define name="contentPlace">
+        <div class="container" style="margin-bottom: 100px">
+            <ui:insert name="content"/>
+        </div>
+    </ui:define>
 
 </ui:composition>
