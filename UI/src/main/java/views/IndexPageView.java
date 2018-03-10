@@ -12,7 +12,7 @@ public class IndexPageView {
 
     @PostConstruct
     public void init(){
-        helloWorld = "Hello, World";
+        helloWorld = "Sosat";
     }
 
     public String getHelloWorld() {

@@ -60,7 +60,6 @@
                     <version>2.6</version>
                     <configuration>
                         <attachClasses>true</attachClasses>
-                        <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                         <archive>
                             <manifest>

@@ -6,6 +6,11 @@
         <element id="directory" name="classes">
           <element id="module-output" name="UI" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:6.1" />
+          <element id="library" level="project" name="Maven: org.primefaces.themes:all-themes:1.0.10" />
+          <element id="library" level="project" name="Maven: org.webjars:jquery:2.1.4" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/UI/target/UI-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
