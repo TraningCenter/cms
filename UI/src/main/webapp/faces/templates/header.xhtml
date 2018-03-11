@@ -6,12 +6,17 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <b:navBar id="header" inverse="true">
-        <h:outputLink styleClass="navbar-brand logo-brand" value="#{request.contextPath}">
+        <h:outputLink styleClass="navbar-brand logo-brand" value="allPostsPage.xhtml">
             <div class="logo"/>
         </h:outputLink>
         <h:outputLink value="#{request.contextPath}">
             <h:outputText styleClass="logoText" value="Habrahabr"/>
         </h:outputLink>
+        <h:outputText style="font-size: 30px; color: #9E9E9E" value="#{loginView.username}"/>
+        <b:navbarLinks pull="right">
+            <b:navLink value="Make post" href="createPostPage.xhtml"/>
+            <b:navLink value="Login" href="loginPage.xhtml"/>
+        </b:navbarLinks>
     </b:navBar>
 
 </ui:composition>

@@ -9,7 +9,7 @@
 
     <ui:define name="content">
 
-        <c:forEach items="#{indexPageView.posts}" var="post" varStatus="status">
+        <c:forEach items="#{allPostsView.getPostsReversed()}" var="post" varStatus="status">
 
             <div class="post">
                 <div class="postHeader">

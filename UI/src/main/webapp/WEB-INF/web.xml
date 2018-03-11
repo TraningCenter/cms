@@ -28,7 +28,7 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>faces/allPostsPage.xhtml</welcome-file>
+        <welcome-file>allPostsPage.xhtml</welcome-file>
     </welcome-file-list>
 
 </web-app>

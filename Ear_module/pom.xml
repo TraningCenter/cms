@@ -51,7 +51,7 @@
                             <groupId>${project.groupId}</groupId>
                             <artifactId>UI</artifactId>
                             <unpack>true</unpack>
-                            <contextRoot>/habr</contextRoot>
+                            <contextRoot>/habr/faces</contextRoot>
                         </webModule>
                     </modules>
                 </configuration>
