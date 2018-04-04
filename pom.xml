@@ -10,8 +10,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>UI</module>
         <module>Ear_module</module>
+        <module>UI</module>
+        <module>PM</module>
     </modules>
 
     <dependencyManagement>
@@ -28,6 +29,13 @@
                 <groupId>${project.groupId}</groupId>
                 <version>${project.version}</version>
                 <artifactId>UI</artifactId>
+                <type>war</type>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <version>${project.version}</version>
+                <artifactId>PM</artifactId>
                 <type>war</type>
             </dependency>
 

@@ -27,6 +27,11 @@
             <type>war</type>
         </dependency>
 
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>PM</artifactId>
+            <type>war</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -53,6 +58,14 @@
                             <unpack>true</unpack>
                             <contextRoot>/habr/faces</contextRoot>
                         </webModule>
+
+                        <webModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>PM</artifactId>
+                            <unpack>true</unpack>
+                            <contextRoot>/pm</contextRoot>
+                        </webModule>
+
                     </modules>
                 </configuration>
             </plugin>

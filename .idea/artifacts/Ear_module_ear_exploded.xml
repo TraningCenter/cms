@@ -9,6 +9,9 @@
       <element id="directory" name="UI-1.0-SNAPSHOT.war">
         <element id="artifact" artifact-name="UI:war exploded" />
       </element>
+      <element id="directory" name="PM-1.0-SNAPSHOT.war">
+        <element id="artifact" artifact-name="PM:war exploded" />
+      </element>
     </root>
   </artifact>
 </component>

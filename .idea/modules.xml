@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Ear_module/Ear_module.iml" filepath="$PROJECT_DIR$/Ear_module/Ear_module.iml" />
       <module fileurl="file://$PROJECT_DIR$/Habr.iml" filepath="$PROJECT_DIR$/Habr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PM/PM.iml" filepath="$PROJECT_DIR$/PM/PM.iml" />
       <module fileurl="file://$PROJECT_DIR$/UI/UI.iml" filepath="$PROJECT_DIR$/UI/UI.iml" />
     </modules>
   </component>

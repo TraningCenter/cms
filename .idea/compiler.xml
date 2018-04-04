@@ -7,12 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Ear_module" />
+        <module name="PM" />
         <module name="UI" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Ear_module" target="1.5" />
       <module name="Habr" target="1.5" />
+      <module name="PM" target="1.8" />
+      <module name="PM (1)" target="1.8" />
       <module name="UI" target="1.8" />
     </bytecodeTargetLevel>
   </component>
