@@ -17,13 +17,13 @@
     </context-param>
 
     <servlet>
-        <servlet-name>FacesServlet</servlet-name>
+        <servlet-name>Faces_Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>FacesServlet</servlet-name>
+        <servlet-name>Faces_Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
 

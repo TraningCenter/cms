@@ -9,7 +9,7 @@
                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <bean id="emfPostgreSQL"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> <!--depends-on="flyway"-->
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" depends-on="flyway">
         <property name="dataSource" ref="ds"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
@@ -21,6 +21,16 @@
                 <prop key="hibernate.show_sql">true</prop>
                 <!--      <prop key="hibernate.hbm2ddl.auto">create-drop</prop> -->
             </props>
+        </property>
+    </bean>
+
+    <bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate">
+        <property name="dataSource" ref="ds"/>
+        <property name="baselineOnMigrate" value="true"/>
+        <property name="locations">
+            <list>
+                <value>META-INF/sql</value>
+            </list>
         </property>
     </bean>
 
