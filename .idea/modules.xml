@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CM/CM.iml" filepath="$PROJECT_DIR$/CM/CM.iml" />
       <module fileurl="file://$PROJECT_DIR$/Ear_module/Ear_module.iml" filepath="$PROJECT_DIR$/Ear_module/Ear_module.iml" />
       <module fileurl="file://$PROJECT_DIR$/Habr.iml" filepath="$PROJECT_DIR$/Habr.iml" />
       <module fileurl="file://$PROJECT_DIR$/PM/PM.iml" filepath="$PROJECT_DIR$/PM/PM.iml" />

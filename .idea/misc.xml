@@ -3,6 +3,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file url="file://$PROJECT_DIR$/PM/overlays" />
     <file type="javaeeApplication" url="file://$PROJECT_DIR$" />
+    <file type="web" url="file://$PROJECT_DIR$/CM" />
     <file type="web" url="file://$PROJECT_DIR$/Ear_module/PM" />
     <file type="web" url="file://$PROJECT_DIR$/PM" />
     <file type="web" url="file://$PROJECT_DIR$/UI" />

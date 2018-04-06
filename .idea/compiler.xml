@@ -6,12 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="CM" />
         <module name="Ear_module" />
         <module name="PM" />
         <module name="UI" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="CM" target="1.8" />
       <module name="Ear_module" target="1.5" />
       <module name="Habr" target="1.5" />
       <module name="PM" target="1.8" />

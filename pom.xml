@@ -13,6 +13,7 @@
         <module>Ear_module</module>
         <module>UI</module>
         <module>PM</module>
+        <module>CM</module>
     </modules>
 
     <dependencyManagement>
@@ -36,6 +37,13 @@
                 <groupId>${project.groupId}</groupId>
                 <version>${project.version}</version>
                 <artifactId>PM</artifactId>
+                <type>war</type>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <version>${project.version}</version>
+                <artifactId>CM</artifactId>
                 <type>war</type>
             </dependency>
 

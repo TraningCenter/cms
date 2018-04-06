@@ -25,5 +25,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.activation:activation:1.1" level="project" />
     <orderEntry type="module" module-name="UI" />
     <orderEntry type="module" module-name="PM" />
+    <orderEntry type="module" module-name="CM" />
   </component>
 </module>

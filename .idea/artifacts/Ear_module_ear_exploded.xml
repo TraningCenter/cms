@@ -12,6 +12,9 @@
       <element id="directory" name="PM-1.0-SNAPSHOT.war">
         <element id="artifact" artifact-name="PM:war exploded" />
       </element>
+      <element id="archive" name="CM-1.0-SNAPSHOT.war">
+        <element id="artifact" artifact-name="CM:war exploded" />
+      </element>
     </root>
   </artifact>
 </component>
