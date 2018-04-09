@@ -73,6 +73,13 @@
                             <contextRoot>/pm</contextRoot>
                         </webModule>
 
+                        <webModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>CM</artifactId>
+                            <unpack>true</unpack>
+                            <contextRoot>/cm</contextRoot>
+                        </webModule>
+
                     </modules>
                 </configuration>
             </plugin>
