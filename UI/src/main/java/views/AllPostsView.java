@@ -3,12 +3,14 @@ package views;
 import dto.PostDto;
 import javafx.geometry.Pos;
 import model.PostsService;
+import util.PMConnector;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +21,14 @@ public class AllPostsView {
     @Inject
     public PostsService postsService;
 
+    @Inject
+    public PMConnector pmConnector;
+
     public List<PostDto> posts;
+
+    public String input;
+
+    public String result;
 
     @PostConstruct
     public void init(){
@@ -42,6 +51,14 @@ public class AllPostsView {
         return result;
     }
 
+    public void send(){
+        try {
+            result = pmConnector.sentGet(input);
+        }catch (IOException e){
+
+        }
+    }
+
     public void addPost(PostDto newPost){
         postsService.addPost(newPost);
     }
@@ -49,5 +66,25 @@ public class AllPostsView {
     public List<PostDto> getPosts() {
         posts = postsService.getPosts();
         return posts;
+    }
+
+    public String getInput() {
+        return input;
+    }
+
+    public void setInput(String input) {
+        this.input = input;
+    }
+
+    public void setPmConnector(PMConnector pmConnector) {
+        this.pmConnector = pmConnector;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 }
