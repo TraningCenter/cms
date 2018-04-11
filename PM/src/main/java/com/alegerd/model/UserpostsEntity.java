@@ -6,36 +6,40 @@ import java.util.Objects;
 @Entity
 @Table(name = "userposts", schema = "public", catalog = "pm")
 public class UserpostsEntity {
-    private int id;
-    private Integer userId;
-    private Integer postId;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    public int getId() {
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UsersEntity user;
+
+    @Column(name = "post_id")
+    private Long postId;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @Column(name = "user_id")
-    public Integer getUserId() {
-        return userId;
+    public UsersEntity getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(UsersEntity user) {
+        this.user = user;
     }
 
-    @Column(name = "post_id")
-    public Integer getPostId() {
+    public Long getPostId() {
         return postId;
     }
 
-    public void setPostId(Integer postId) {
+    public void setPostId(Long postId) {
         this.postId = postId;
     }
 
@@ -45,13 +49,12 @@ public class UserpostsEntity {
         if (o == null || getClass() != o.getClass()) return false;
         UserpostsEntity that = (UserpostsEntity) o;
         return id == that.id &&
-                Objects.equals(userId, that.userId) &&
+                Objects.equals(user, that.user) &&
                 Objects.equals(postId, that.postId);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, userId, postId);
+        return Objects.hash(id, user, postId);
     }
 }

@@ -22,7 +22,7 @@ public class NewPostView {
     private LoginView loginView;
 
     public String makeNewPost(){
-        PostDto newPost = new PostDto("Custom Title", loginView.getUsername(), newPostContent);
+        PostDto newPost = new PostDto("Custom Title", loginView.getUser().getUsername(), newPostContent);
         postsView.addPost(newPost);
         return "allPostsPage.xhtml?faces-redirect=true";
     }

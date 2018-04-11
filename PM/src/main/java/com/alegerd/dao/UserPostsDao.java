@@ -14,8 +14,13 @@ public class UserPostsDao extends GenericDao<UserpostsEntity, Integer>{
     }
 
     public List<UserpostsEntity> getUserPostsByUserId(Integer userId){
-        Query query = getManager().createQuery("select u from UserpostsEntity u where u.userId=:userId")
+        Query query = getManager().createQuery("select u from UserpostsEntity u where u.user.id=:userId")
                 .setParameter("userId", userId);
         return query.getResultList();
+    }
+
+    public Long createAndGetId(UserpostsEntity entity){
+        create(entity);
+        return entity.getId();
     }
 }

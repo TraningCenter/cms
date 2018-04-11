@@ -1,12 +1,10 @@
 package views;
 
 import dto.PostDto;
-import javafx.geometry.Pos;
 import model.PostsService;
 import util.PMConnector;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
@@ -53,19 +51,23 @@ public class AllPostsView {
 
     public void send(){
         try {
-            result = pmConnector.sentGet(input);
+            result = pmConnector.addUser(input);
         }catch (IOException e){
 
         }
     }
 
-    public void addPost(PostDto newPost){
-        postsService.addPost(newPost);
+    public String addPost(PostDto newPost){
+        return postsService.addPost(newPost);
     }
 
     public List<PostDto> getPosts() {
         posts = postsService.getPosts();
         return posts;
+    }
+
+    public void setPostsService(PostsService postsService) {
+        this.postsService = postsService;
     }
 
     public String getInput() {
