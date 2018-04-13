@@ -2,14 +2,12 @@ package util;
 
 import javax.ejb.Stateful;
 import javax.net.ssl.HttpsURLConnection;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 import com.google.gson.Gson;
+import dto.ContentDto;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -78,16 +76,21 @@ public class PMConnector {
         return handler.handleResponse(response);
     }
 
-    public void sendPost() throws IOException {
-        /*
-        String url = "http://localhost:8080/pm/";
-        Gson gson = new Gson();
-        HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpPost post = new HttpPost(url);
-        StringEntity postingString = new StringEntity(gson.toJson());
-        post.setEntity(postingString);
-        post.setHeader("Content-type", "application/json");
-        HttpResponse response = httpClient.execute(post);
-        */
+    public void addContentToPost(ContentDto contentDto) throws IOException{
+        try {
+
+            Gson gson = new Gson();
+            String url = "http://localhost:8080/cm/addContent";
+            HttpClient httpClient = HttpClientBuilder.create().build();
+            HttpPost post = new HttpPost(url);
+            String content = gson.toJson(contentDto);
+            StringEntity stringEntity = new StringEntity(content);
+            post.setEntity(stringEntity);
+            post.setHeader("Content-type", "application/json");
+            HttpResponse response = httpClient.execute(post);
+            ResponseHandler<String> handler = new BasicResponseHandler();
+        }catch (UnsupportedEncodingException e){
+            e.printStackTrace();
+        }
     }
 }

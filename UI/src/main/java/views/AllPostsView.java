@@ -57,8 +57,8 @@ public class AllPostsView {
         }
     }
 
-    public String addPost(PostDto newPost){
-        return postsService.addPost(newPost);
+    public void addPost(PostDto newPost){
+        postsService.addPost(newPost);
     }
 
     public List<PostDto> getPosts() {

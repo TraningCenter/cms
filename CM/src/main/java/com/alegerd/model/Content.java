@@ -10,6 +10,11 @@ public class Content {
 
     }
 
+    public Content(Integer post_id, String post_content) {
+        this.post_id = post_id;
+        this.post_content = post_content;
+    }
+
     public Content(Integer id, Integer post_id, String post_content) {
         this.id = id;
         this.post_id = post_id;

@@ -1,5 +1,6 @@
 package model;
 
+import dto.ContentDto;
 import dto.PostDto;
 import dto.UserDto;
 import util.PMConnector;
@@ -21,15 +22,15 @@ public class PostsService implements Serializable{
     @Inject
     private PMConnector connector;
 
-    public String addPost(PostDto post){
-        String postid = "";
+    public void addPost(PostDto post){
+        String postid;
         try {
             UserDto user = LoginView.user;
             postid = connector.addPostToUser(user.getId().toString());
+            connector.addContentToPost(new ContentDto(Integer.parseInt(postid), post.getPost()));
         }catch (IOException e){
             e.printStackTrace();
         }
-        return postid;
     }
 
     public void setPosts(List<PostDto> posts) {

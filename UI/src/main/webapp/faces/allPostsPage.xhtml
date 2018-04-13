@@ -9,17 +9,6 @@
 
     <ui:define name="content">
 
-        <b:row>
-            <h:form>
-                <h:panelGrid columns="4" cellpadding="5">
-                    <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
-                    <p:inputText id="name" value="#{allPostsView.input}" />
-                    <p:commandButton value="Submit" action="#{allPostsView.send()}" update="display" icon="ui-icon-check" />
-                    <h:outputText id="display" value="#{allPostsView.result}" />
-                </h:panelGrid>
-            </h:form>
-        </b:row>
-
         <c:forEach items="#{allPostsView.getPostsReversed()}" var="post" varStatus="status">
 
             <div class="post">

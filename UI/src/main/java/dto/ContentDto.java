@@ -1,12 +1,13 @@
-package com.alegerd.dto;
+package dto;
 
 public class ContentDto {
 
     private Integer postId;
     private String content;
 
-    public ContentDto(){
-
+    public ContentDto(Integer postId, String content) {
+        this.postId = postId;
+        this.content = content;
     }
 
     public Integer getPostId() {
@@ -24,4 +25,5 @@ public class ContentDto {
     public void setContent(String content) {
         this.content = content;
     }
+
 }
