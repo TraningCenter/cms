@@ -1,8 +1,6 @@
 package views;
 
 import dto.PostDto;
-import dto.SimplePostDto;
-import javafx.geometry.Pos;
 import model.PostsService;
 import util.PMConnector;
 
@@ -12,7 +10,6 @@ import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 @ManagedBean

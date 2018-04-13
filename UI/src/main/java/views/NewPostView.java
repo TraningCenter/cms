@@ -1,13 +1,10 @@
 package views;
 
 import dto.PostDto;
-import model.PostsService;
 
-import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Inject;
 
 @ManagedBean
 @SessionScoped

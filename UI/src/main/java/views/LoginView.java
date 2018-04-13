@@ -2,7 +2,6 @@ package views;
 
 import com.google.gson.Gson;
 import dto.UserDto;
-import model.PostsService;
 import util.PMConnector;
 
 import javax.annotation.PostConstruct;

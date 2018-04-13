@@ -2,7 +2,6 @@ package views;
 
 import dto.PostDto;
 import model.PostsService;
-import util.PMConnector;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
