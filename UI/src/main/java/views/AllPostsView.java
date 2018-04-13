@@ -1,6 +1,7 @@
 package views;
 
 import dto.PostDto;
+import javafx.geometry.Pos;
 import model.PostsService;
 import util.PMConnector;
 
@@ -42,11 +43,7 @@ public class AllPostsView {
 
     public List<PostDto> getPostsReversed(){
         posts = postsService.getPosts();
-        List<PostDto> result = new ArrayList<>();
-        for(int i = posts.size()-1; i >= 0; i--){
-            result.add(posts.get(i));
-        }
-        return result;
+        return reverse(posts);
     }
 
     public void send(){
@@ -59,6 +56,14 @@ public class AllPostsView {
 
     public void addPost(PostDto newPost){
         postsService.addPost(newPost);
+    }
+
+    private List<PostDto> reverse(List<PostDto> posts){
+        List<PostDto> result = new ArrayList<>();
+        for(int i = posts.size()-1; i >= 0; i--){
+            result.add(posts.get(i));
+        }
+        return result;
     }
 
     public List<PostDto> getPosts() {

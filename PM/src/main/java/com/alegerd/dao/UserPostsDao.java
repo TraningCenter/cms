@@ -13,7 +13,7 @@ public class UserPostsDao extends GenericDao<UserpostsEntity, Integer>{
         super(UserpostsEntity.class);
     }
 
-    public List<UserpostsEntity> getUserPostsByUserId(Integer userId){
+    public List<UserpostsEntity> getUserPostsByUserId(Long userId){
         Query query = getManager().createQuery("select u from UserpostsEntity u where u.user.id=:userId")
                 .setParameter("userId", userId);
         return query.getResultList();

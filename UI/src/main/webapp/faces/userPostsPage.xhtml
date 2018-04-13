@@ -1,0 +1,37 @@
+<ui:composition template="templates/content.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <ui:define name="content">
+
+        <c:forEach items="#{userPostsView.getAllUserPosts()}" var="post" varStatus="status">
+
+            <div class="post">
+                <div class="postHeader">
+                    <b:row>
+                        <b:column colMd="4" colSm="4" colLg="4">
+                            <div class="authorName">
+                                <h:outputText value="#{post.author}"/>
+                            </div>
+                        </b:column>
+                        <b:column colMd="8" colSm="8" colLg="8">
+                            <div class="postTitle">
+                                <h:outputText value="#{post.title}"/>
+                            </div>
+                        </b:column>
+                    </b:row>
+                </div>
+                <div class="postContent">
+                    <h:outputText value="#{post.post}"/>
+                </div>
+            </div>
+
+        </c:forEach>
+
+    </ui:define>
+</ui:composition>

@@ -26,4 +26,11 @@ public class UserDao extends GenericDao<UsersEntity, Integer>{
         List<UsersEntity> result = query.getResultList();
         return result.get(0);
     }
+
+    public boolean isUserExists(String username){
+        Query query = getManager().createQuery("select u from UsersEntity u where u.username=:username")
+                .setParameter("username", username);
+        List<UsersEntity> result = query.getResultList();
+        return result.size() != 0? true : false;
+    }
 }

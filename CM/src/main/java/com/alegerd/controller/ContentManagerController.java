@@ -16,7 +16,7 @@ public class ContentManagerController {
     @Autowired
     ContentService contentService;
 
-    @RequestMapping(value = "/{postId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{postId}", method = RequestMethod.GET)
     @ResponseBody
     public List<String> test(@PathVariable Integer postId){
         return contentService.getContentByPostId(postId);

@@ -19,7 +19,7 @@ public class PostManagerController {
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     @ResponseBody
     public List<Integer> test(@PathVariable Integer userId){
-        return postManagerService.getAllPostsByUserId(userId);
+        return postManagerService.getAllPostsByUserId(userId.toString());
     }
 
 
@@ -32,7 +32,8 @@ public class PostManagerController {
     @RequestMapping(value = "/get/{username}", method = RequestMethod.GET )
     @ResponseBody
     public UserDto getUserByUsername(@PathVariable String username){
-        return postManagerService.getUserByUsername(username);
+        UserDto userDto = postManagerService.getUserByUsername(username);
+        return userDto;
     }
 
     @RequestMapping(value = "/addPostToUser/{userId}", method = RequestMethod.POST)

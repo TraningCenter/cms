@@ -7,6 +7,10 @@ public class PostDto {
     private String photo;
     private String post;
 
+    public PostDto(){
+
+    }
+
     public PostDto(String title, String author, String post) {
         this.title = title;
         this.author = author;

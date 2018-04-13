@@ -5,6 +5,7 @@ import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 import com.google.gson.Gson;
 import dto.ContentDto;
@@ -22,30 +23,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 public class PMConnector {
 
     public static final String PMUrl = "http://localhost:8080/pm/";
-
-    public String sentGet(String val) throws IOException {
-        String url = PMUrl + val;
-
-        URL obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
-        // optional default is GET
-        con.setRequestMethod("GET");
-
-        int responseCode = con.getResponseCode();
-
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-
-        return response.toString();
-    }
 
     public String addUser(String username) throws IOException {
         String url = "http://localhost:8080/pm/addUser";
@@ -76,21 +53,22 @@ public class PMConnector {
         return handler.handleResponse(response);
     }
 
-    public void addContentToPost(ContentDto contentDto) throws IOException{
-        try {
+    public String getUserByUsername(String username) throws IOException{
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        String getUrl = "http://localhost:8080/pm/get/" + username;
+        HttpGet get = new HttpGet(getUrl);
+        HttpResponse response = httpClient.execute(get);
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        return handler.handleResponse(response);
+    }
 
-            Gson gson = new Gson();
-            String url = "http://localhost:8080/cm/addContent";
-            HttpClient httpClient = HttpClientBuilder.create().build();
-            HttpPost post = new HttpPost(url);
-            String content = gson.toJson(contentDto);
-            StringEntity stringEntity = new StringEntity(content);
-            post.setEntity(stringEntity);
-            post.setHeader("Content-type", "application/json");
-            HttpResponse response = httpClient.execute(post);
-            ResponseHandler<String> handler = new BasicResponseHandler();
-        }catch (UnsupportedEncodingException e){
-            e.printStackTrace();
-        }
+    public String getUserPostsByUserId(String userId) throws IOException{
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        String getUrl = "http://localhost:8080/pm/" + userId;
+        HttpGet get = new HttpGet(getUrl);
+        HttpResponse response = httpClient.execute(get);
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        String body = handler.handleResponse(response);
+        return body;
     }
 }

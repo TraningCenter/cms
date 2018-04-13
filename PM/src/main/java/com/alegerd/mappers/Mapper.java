@@ -31,13 +31,11 @@ public class Mapper {
     public static UserpostsEntity userpostsDtoToUserpostEntity(PostDto postDto) {
         UserpostsEntity entity = new UserpostsEntity();
         entity.setPostId(postDto.getPostId());
-        entity.setUser(Mapper.userDtoToUserEntity(postDto.getUserDto()));
         return entity;
     }
 
     public static PostDto userpostsEntityToUserpostsDto(UserpostsEntity entity) {
         PostDto postDto = new PostDto(entity.getPostId());
-        postDto.setUserDto(Mapper.userEntityToUserDto(entity.getUser()));
         return postDto;
     }
 }

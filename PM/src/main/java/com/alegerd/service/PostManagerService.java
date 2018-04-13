@@ -22,9 +22,9 @@ public class PostManagerService {
     @Autowired
     private UserDao userDao;
 
-    public List<Integer> getAllPostsByUserId(Integer userId){
+    public List<Integer> getAllPostsByUserId(String userId){
         List<Integer> result = new ArrayList<>();
-        List<UserpostsEntity> userPostDtos = userPostsDao.getUserPostsByUserId(userId);
+        List<UserpostsEntity> userPostDtos = userPostsDao.getUserPostsByUserId(Long.parseLong(userId));
         userPostDtos.forEach(userpostsEntity -> result.add(userpostsEntity.getPostId().intValue()));
         return result;
     }
@@ -32,12 +32,15 @@ public class PostManagerService {
     @Transactional
     public void addUser(UserDto userDto){
         UsersEntity entity = Mapper.userDtoToUserEntity(userDto);
-        userDao.create(entity);
+        if(!userDao.isUserExists(userDto.getUsername())) {
+            userDao.create(entity);
+        }
     }
 
     @Transactional
     public UserDto getUserByUsername(String username){
-        return Mapper.userEntityToUserDto(userDao.getUserByUsername(username));
+        UsersEntity entity = userDao.getUserByUsername(username);
+        return Mapper.userEntityToUserDto(entity);
     }
 
     @Transactional
