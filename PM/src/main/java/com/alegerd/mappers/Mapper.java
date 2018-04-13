@@ -35,7 +35,7 @@ public class Mapper {
     }
 
     public static PostDto userpostsEntityToUserpostsDto(UserpostsEntity entity) {
-        PostDto postDto = new PostDto(entity.getPostId());
+        PostDto postDto = new PostDto(entity.getPostId(), entity.getUser().getUsername());
         return postDto;
     }
 }

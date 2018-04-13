@@ -71,4 +71,14 @@ public class PMConnector {
         String body = handler.handleResponse(response);
         return body;
     }
+
+    public String getAllPosts() throws IOException{
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        String getUrl = "http://localhost:8080/pm/getAll";
+        HttpGet get = new HttpGet(getUrl);
+        HttpResponse response = httpClient.execute(get);
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        String body = handler.handleResponse(response);
+        return body;
+    }
 }

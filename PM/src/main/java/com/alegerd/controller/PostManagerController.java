@@ -1,5 +1,6 @@
 package com.alegerd.controller;
 
+import com.alegerd.dto.PostDto;
 import com.alegerd.dto.UserDto;
 import com.alegerd.service.PostManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,6 @@ public class PostManagerController {
         return postManagerService.getAllPostsByUserId(userId.toString());
     }
 
-
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     @ResponseBody
     public void addUser(@RequestBody String username){
@@ -34,6 +34,16 @@ public class PostManagerController {
     public UserDto getUserByUsername(@PathVariable String username){
         UserDto userDto = postManagerService.getUserByUsername(username);
         return userDto;
+    }
+
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @ResponseBody
+    public List<PostDto> getAllPosts(){
+        List<PostDto> posts = postManagerService.getAllPosts();
+
+        //TODO
+        posts = posts.subList(0,10);
+        return posts;
     }
 
     @RequestMapping(value = "/addPostToUser/{userId}", method = RequestMethod.POST)

@@ -2,6 +2,7 @@ package com.alegerd.service;
 
 import com.alegerd.dao.UserDao;
 import com.alegerd.dao.UserPostsDao;
+import com.alegerd.dto.PostDto;
 import com.alegerd.dto.UserDto;
 import com.alegerd.mappers.Mapper;
 import com.alegerd.model.UserpostsEntity;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -41,6 +43,13 @@ public class PostManagerService {
     public UserDto getUserByUsername(String username){
         UsersEntity entity = userDao.getUserByUsername(username);
         return Mapper.userEntityToUserDto(entity);
+    }
+
+    @Transactional
+    public List<PostDto> getAllPosts(){
+        List<PostDto> res = new LinkedList<>();
+        userPostsDao.getAllPosts().forEach(item -> res.add(new PostDto(item.getPostId(), item.getUser().getUsername())));
+        return res;
     }
 
     @Transactional

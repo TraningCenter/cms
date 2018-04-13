@@ -19,6 +19,11 @@ public class UserPostsDao extends GenericDao<UserpostsEntity, Integer>{
         return query.getResultList();
     }
 
+    public List<UserpostsEntity> getAllPosts(){
+        Query query = getManager().createQuery("select u from UserpostsEntity u ");
+        return query.getResultList();
+    }
+
     public Long createAndGetId(UserpostsEntity entity){
         create(entity);
         return entity.getId();

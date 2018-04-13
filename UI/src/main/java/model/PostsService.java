@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import dto.ContentDto;
 import dto.PostDto;
+import dto.SimplePostDto;
 import dto.UserDto;
 import util.CMConnector;
 import util.PMConnector;
@@ -20,8 +21,6 @@ import java.util.List;
 
 @Stateful
 public class PostsService implements Serializable {
-
-    List<PostDto> posts = new ArrayList<>();
 
     @Inject
     private PMConnector pmConnector;
@@ -40,20 +39,22 @@ public class PostsService implements Serializable {
         }
     }
 
-    public List<PostDto> getAllUserPosts(String username) throws IOException{
+    public List<PostDto> getAllUserPosts(String username) throws IOException {
         Gson gson = new Gson();
-        Type listtype = new TypeToken<List<Integer>>(){}.getType();
-        Type stringListType = new TypeToken<List<String>>(){}.getType();
+        Type listtype = new TypeToken<List<Integer>>() {
+        }.getType();
+        Type stringListType = new TypeToken<List<String>>() {
+        }.getType();
         List<PostDto> result = new LinkedList<>();
 
         UserDto userDto = gson.fromJson(pmConnector.getUserByUsername(username), UserDto.class);
         List<Integer> postIds = gson.fromJson(pmConnector.getUserPostsByUserId(userDto.getId().toString()), listtype);
-        for (Integer postId: postIds) {
+        for (Integer postId : postIds) {
             String response = cmConnector.getContentByPostId(postId.toString());
             List<String> content = gson.fromJson(response, stringListType);
 
             String res = "";              //TODO
-            for (String item: content) {
+            for (String item : content) {
                 res += item;
             }
 
@@ -71,12 +72,30 @@ public class PostsService implements Serializable {
         this.cmConnector = cmConnector;
     }
 
-    public void setPosts(List<PostDto> posts) {
-        this.posts = posts;
-    }
+    public List<PostDto> getPosts() throws IOException{
+        Gson gson = new Gson();
+        Type listPostDto = new TypeToken<List<SimplePostDto>>() {}.getType();
+        Type stringListType = new TypeToken<List<String>>() {}.getType();
+        List<SimplePostDto> postDtos = gson.fromJson(pmConnector.getAllPosts(), listPostDto);
+        List<PostDto> result = new LinkedList<>();
 
-    public List<PostDto> getPosts() {
-        return posts;
+        for (SimplePostDto post : postDtos) {
+            String response = cmConnector.getContentByPostId(post.getPostId().toString());
+            List<String> content = gson.fromJson(response, stringListType);
+
+            String res = "";              //TODO
+            for (String item : content) {
+                res += item;
+            }
+
+            PostDto postDto = new PostDto();
+            postDto.setAuthor(post.getAuthor());
+            postDto.setTitle(post.getAuthor() + "'s post");
+            postDto.setPost(res);
+            result.add(postDto);
+        }
+
+        return result;
     }
 
     public void setPmConnector(PMConnector pmConnector) {

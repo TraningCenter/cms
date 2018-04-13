@@ -1,14 +1,13 @@
-package com.alegerd.dto;
+package dto;
 
-public class PostDto {
+public class SimplePostDto {
 
     public Long postId;
 
     public String author;
 
-    public PostDto(Long postId, String author) {
+    public SimplePostDto(Long postId, String author) {
         this.postId = postId;
-        this.author = author;
     }
 
     public String getAuthor() {
