@@ -1,5 +1,6 @@
 package com.alegerd.dao;
 
+import com.alegerd.dto.PostDto;
 import com.alegerd.model.UserpostsEntity;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +23,12 @@ public class UserPostsDao extends GenericDao<UserpostsEntity, Integer>{
     public List<UserpostsEntity> getAllPosts(){
         Query query = getManager().createQuery("select u from UserpostsEntity u ");
         return query.getResultList();
+    }
+
+    public UserpostsEntity getPostByPostId(Long postId){
+        Query query = getManager().createQuery("select u from UserpostsEntity u where u.postId=:postId")
+                .setParameter("postId", postId);
+        return (UserpostsEntity) query.getSingleResult();
     }
 
     public Long createAndGetId(UserpostsEntity entity){

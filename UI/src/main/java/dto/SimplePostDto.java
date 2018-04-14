@@ -6,6 +6,10 @@ public class SimplePostDto {
 
     public String author;
 
+    public SimplePostDto(){
+
+    }
+
     public SimplePostDto(Long postId, String author) {
         this.postId = postId;
     }

@@ -25,7 +25,7 @@ public class PMConnector {
     public static final String PMUrl = "http://localhost:8080/pm/";
 
     public String addUser(String username) throws IOException {
-        String url = "http://localhost:8080/pm/addUser";
+        String url = PMUrl + "addUser";
         HttpClient httpClient = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
         StringEntity stringEntity = new StringEntity(username);
@@ -33,7 +33,7 @@ public class PMConnector {
         post.setHeader("Content-type", "application/json");
         httpClient.execute(post);
 
-        String getUrl = "http://localhost:8080/pm/get/" + username;
+        String getUrl = PMUrl + "get/" + username;
         HttpGet get = new HttpGet(getUrl);
         HttpResponse response = httpClient.execute(get);
         ResponseHandler<String> handler = new BasicResponseHandler();
@@ -42,7 +42,7 @@ public class PMConnector {
     }
 
     public String addPostToUser(String userId) throws IOException {
-        String url = "http://localhost:8080/pm/addPostToUser/" + userId;
+        String url = PMUrl + "addPostToUser/" + userId;
         HttpClient httpClient = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
         StringEntity stringEntity = new StringEntity(userId);
@@ -55,7 +55,7 @@ public class PMConnector {
 
     public String getUserByUsername(String username) throws IOException{
         HttpClient httpClient = HttpClientBuilder.create().build();
-        String getUrl = "http://localhost:8080/pm/get/" + username;
+        String getUrl = PMUrl + "get/" + username;
         HttpGet get = new HttpGet(getUrl);
         HttpResponse response = httpClient.execute(get);
         ResponseHandler<String> handler = new BasicResponseHandler();
@@ -64,7 +64,7 @@ public class PMConnector {
 
     public String getUserPostsByUserId(String userId) throws IOException{
         HttpClient httpClient = HttpClientBuilder.create().build();
-        String getUrl = "http://localhost:8080/pm/" + userId;
+        String getUrl = PMUrl + userId;
         HttpGet get = new HttpGet(getUrl);
         HttpResponse response = httpClient.execute(get);
         ResponseHandler<String> handler = new BasicResponseHandler();
@@ -74,7 +74,17 @@ public class PMConnector {
 
     public String getAllPosts() throws IOException{
         HttpClient httpClient = HttpClientBuilder.create().build();
-        String getUrl = "http://localhost:8080/pm/getAll";
+        String getUrl = PMUrl+ "getAll";
+        HttpGet get = new HttpGet(getUrl);
+        HttpResponse response = httpClient.execute(get);
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        String body = handler.handleResponse(response);
+        return body;
+    }
+
+    public String getPostByPostId(String postId) throws IOException{
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        String getUrl = PMUrl+ "/getPost/"+ postId;
         HttpGet get = new HttpGet(getUrl);
         HttpResponse response = httpClient.execute(get);
         ResponseHandler<String> handler = new BasicResponseHandler();

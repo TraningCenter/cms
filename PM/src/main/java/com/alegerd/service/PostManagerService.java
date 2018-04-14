@@ -53,6 +53,11 @@ public class PostManagerService {
     }
 
     @Transactional
+    public PostDto getPostByPostId(String postId){
+        return Mapper.userpostsEntityToUserpostsDto(userPostsDao.getPostByPostId(Long.parseLong(postId)));
+    }
+
+    @Transactional
     public String addPostToUser(String userId){
         String postId;
 

@@ -23,6 +23,13 @@ public class PostManagerController {
         return postManagerService.getAllPostsByUserId(userId.toString());
     }
 
+    @RequestMapping(value = "/getPost/{postId}", method = RequestMethod.GET)
+    @ResponseBody
+    public PostDto getPostByPostId(@PathVariable String postId){
+        PostDto postDto = postManagerService.getPostByPostId(postId);
+        return postDto;
+    }
+
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     @ResponseBody
     public void addUser(@RequestBody String username){

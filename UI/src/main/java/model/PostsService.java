@@ -68,6 +68,27 @@ public class PostsService implements Serializable {
         return result;
     }
 
+    public PostDto findPostById(String id) throws IOException{
+        Gson gson = new Gson();
+        Type stringListType = new TypeToken<List<String>>() {
+        }.getType();
+
+        SimplePostDto post = gson.fromJson(pmConnector.getPostByPostId(id), SimplePostDto.class);
+        PostDto postDto = new PostDto();
+        postDto.setAuthor(post.getAuthor());
+        List<String> content = gson.fromJson(cmConnector.getContentByPostId(id), stringListType);
+
+        StringBuilder sb = new StringBuilder();
+        for (String item :
+                content) {
+            sb.append(item);
+        }
+
+        postDto.setPost(sb.toString());
+        postDto.setTitle(post.getAuthor() + "'s post");
+        return postDto;
+    }
+
     public void setCmConnector(CMConnector cmConnector) {
         this.cmConnector = cmConnector;
     }
