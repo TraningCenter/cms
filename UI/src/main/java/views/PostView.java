@@ -15,8 +15,6 @@ import java.io.IOException;
 @ViewScoped
 public class PostView {
 
-    public SimplePostDto spd;
-
     public PostDto postDto;
 
     @Inject
@@ -24,16 +22,7 @@ public class PostView {
 
     @PostConstruct
     public void init(){
-        spd = new SimplePostDto();
         postDto = new PostDto();
-    }
-
-    public SimplePostDto getSpd() {
-        return spd;
-    }
-
-    public void setSpd(SimplePostDto spd) {
-        this.spd = spd;
     }
 
     public PostDto getPostDto() {
@@ -46,7 +35,7 @@ public class PostView {
 
     public void findPostById(){
         try {
-            postDto = postsService.findPostById(spd.getPostId().toString());
+            postDto = postsService.findPostById(postDto.getId());
         }catch (IOException e){
             e.printStackTrace();
         }

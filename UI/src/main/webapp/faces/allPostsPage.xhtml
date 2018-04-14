@@ -27,10 +27,19 @@
                     </b:row>
                 </div>
                 <div class="postContent">
-                    <h:outputText value="#{post.post}"/>
+                    <c:forEach items="#{post.post}" var="postElement" varStatus="status">
+                        <h:outputText value="#{postElement}"/>
+                        <hr/>
+                    </c:forEach>
                 </div>
+                <b:row>
+                    <b:column colMd="4" colSm="4" colLg="4" offsetLg="8" offsetMd="8" offsetSm="8">
+                        <p:link outcome="postPage" value="Show more" style="font-size: 30px">
+                            <f:param name="id" value="#{post.id}"/>
+                        </p:link>
+                    </b:column>
+                </b:row>
             </div>
-
         </c:forEach>
 
     </ui:define>

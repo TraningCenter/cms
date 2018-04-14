@@ -33,7 +33,7 @@ public class PostsService implements Serializable {
         try {
             UserDto user = LoginView.user;
             postid = pmConnector.addPostToUser(user.getId().toString());
-            cmConnector.addContentToPost(new ContentDto(Integer.parseInt(postid), post.getPost()));
+            cmConnector.addContentToPost(new ContentDto(Integer.parseInt(postid), post.getPost().get(0))); //todo
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,16 +52,11 @@ public class PostsService implements Serializable {
         for (Integer postId : postIds) {
             String response = cmConnector.getContentByPostId(postId.toString());
             List<String> content = gson.fromJson(response, stringListType);
-
-            String res = "";              //TODO
-            for (String item : content) {
-                res += item;
-            }
-
             PostDto postDto = new PostDto();
             postDto.setAuthor(username);
+            postDto.setId(postId.toString());
             postDto.setTitle(username + "'s post");
-            postDto.setPost(res);
+            postDto.setPost(content);
             result.add(postDto);
         }
 
@@ -78,13 +73,8 @@ public class PostsService implements Serializable {
         postDto.setAuthor(post.getAuthor());
         List<String> content = gson.fromJson(cmConnector.getContentByPostId(id), stringListType);
 
-        StringBuilder sb = new StringBuilder();
-        for (String item :
-                content) {
-            sb.append(item);
-        }
-
-        postDto.setPost(sb.toString());
+        postDto.setId(post.getPostId().toString());
+        postDto.setPost(content);
         postDto.setTitle(post.getAuthor() + "'s post");
         return postDto;
     }
@@ -104,15 +94,11 @@ public class PostsService implements Serializable {
             String response = cmConnector.getContentByPostId(post.getPostId().toString());
             List<String> content = gson.fromJson(response, stringListType);
 
-            String res = "";              //TODO
-            for (String item : content) {
-                res += item;
-            }
-
             PostDto postDto = new PostDto();
+            postDto.setId(post.getPostId().toString());
             postDto.setAuthor(post.getAuthor());
             postDto.setTitle(post.getAuthor() + "'s post");
-            postDto.setPost(res);
+            postDto.setPost(content);
             result.add(postDto);
         }
 

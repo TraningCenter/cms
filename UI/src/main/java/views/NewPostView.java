@@ -5,6 +5,8 @@ import dto.PostDto;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import java.util.LinkedList;
+import java.util.List;
 
 @ManagedBean
 @SessionScoped
@@ -19,7 +21,9 @@ public class NewPostView {
     private LoginView loginView;
 
     public String makeNewPost(){
-        PostDto newPost = new PostDto("Custom Title", loginView.getUser().getUsername(), newPostContent);
+        List<String> content = new LinkedList<>();
+        content.add(newPostContent);
+        PostDto newPost = new PostDto("Custom Title", loginView.getUser().getUsername(), content); //todo
         postsView.addPost(newPost);
         return "allPostsPage.xhtml?faces-redirect=true";
     }
