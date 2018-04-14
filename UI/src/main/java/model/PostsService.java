@@ -39,6 +39,10 @@ public class PostsService implements Serializable {
         }
     }
 
+    public void addPartToPost(String postId, String part) throws IOException{
+        cmConnector.addContentToPost(new ContentDto(Integer.parseInt(postId), part));
+    }
+
     public List<PostDto> getAllUserPosts(String username) throws IOException {
         Gson gson = new Gson();
         Type listtype = new TypeToken<List<Integer>>() {

@@ -8,8 +8,8 @@
                 xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <f:metadata>
-        <f:viewParam name="id" value="#{postView.postDto.id}"/>
-        <f:viewAction action="#{postView.findPostById()}"/>
+        <f:viewParam name="id" value="#{addPartToPostView.postDto.id}"/>
+        <f:viewAction action="#{addPartToPostView.findPostById()}"/>
     </f:metadata>
 
     <ui:define name="content">
@@ -19,29 +19,36 @@
                 <b:row>
                     <b:column colMd="4" colSm="4" colLg="4">
                         <div class="authorName">
-                            <h:outputText value="#{postView.postDto.author}"/>
+                            <h:outputText value="#{addPartToPostView.postDto.author}"/>
                         </div>
                     </b:column>
                     <b:column colMd="8" colSm="8" colLg="8">
                         <div class="postTitle">
-                            <h:outputText value="#{postView.postDto.title}"/>
+                            <h:outputText value="#{addPartToPostView.postDto.title}"/>
                         </div>
                     </b:column>
                 </b:row>
             </div>
             <div class="postContent">
-                <c:forEach items="#{postView.postDto.post}" var="postElement" varStatus="status">
+                <c:forEach items="#{addPartToPostView.postDto.post}" var="postElement" varStatus="status">
                     <h:outputText value="#{postElement}"/>
                     <hr/>
                 </c:forEach>
             </div>
-            <b:row>
-                <b:column colMd="4" colSm="4" colLg="4" offsetLg="8" offsetMd="8" offsetSm="8">
-                    <p:link outcome="addPartToPostPage" value="Add Part" style="font-size: 30px">
-                        <f:param name="id" value="#{postView.postDto.id}"/>
-                    </p:link>
-                </b:column>
-            </b:row>
+        </div>
+        <div class="newPost">
+            <h:form>
+                <p:editor id="editor" widgetVar="editorWidget" value="#{addPartToPostView.newPartContent}" width="600"/>
+
+                <h:panelGrid columns="2" style="margin-top: 10px">
+                    <b:commandButton value="Submit"
+                                     action="#{addPartToPostView.addPart()}"
+                                     icon="ui-icon-disk"/>
+
+                    <b:commandButton value="Clear" type="button" onclick="PF('editorWidget').clear();"
+                                     icon="ui-icon-close"/>
+                </h:panelGrid>
+            </h:form>
         </div>
 
     </ui:define>

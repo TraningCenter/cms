@@ -19,13 +19,13 @@ import java.util.List;
 @Stateful
 public class CMConnector {
 
-    public static final String CMUrl = "http://localhost:8080/cm/";
+    //public static final String CMUrl = RequestPathFinder.getPath() + "/cm/";
 
     public void addContentToPost(ContentDto contentDto) throws IOException {
         try {
 
             Gson gson = new Gson();
-            String url = CMUrl + "addContent";
+            String url = RequestPathFinder.getPath() + "/cm/" + "addContent";
             HttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost post = new HttpPost(url);
             String content = gson.toJson(contentDto);
@@ -42,7 +42,7 @@ public class CMConnector {
 
     public String getContentByPostId(String postId) throws IOException {
 
-        String url = CMUrl + postId;
+        String url = RequestPathFinder.getPath() + "/cm/" + postId;
         HttpClient httpClient = HttpClientBuilder.create().build();
         HttpGet get = new HttpGet(url);
         StringEntity stringEntity = new StringEntity(postId);

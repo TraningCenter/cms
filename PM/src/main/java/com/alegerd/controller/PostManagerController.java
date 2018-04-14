@@ -49,7 +49,8 @@ public class PostManagerController {
         List<PostDto> posts = postManagerService.getAllPosts();
 
         //TODO
-        posts = posts.subList(0,10);
+        if(posts.size() > 12)
+            posts = posts.subList(posts.size()-11, posts.size());
         return posts;
     }
 

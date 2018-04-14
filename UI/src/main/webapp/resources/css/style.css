@@ -34,6 +34,7 @@
     margin-top: 50px;
     margin-bottom: 50px;
     background-color: #B2DFDB;
+    height: auto;
 }
 
 .postHeader{
@@ -53,7 +54,7 @@
 .postContent{
     padding: 20px;
     background-color: #80CBC4;
-    height: 300px;
+    height: auto;
 }
 
 .newPost{
